@@ -1,3 +1,5 @@
+# Hardhat SmartContract Lottery
+
 This is a solidity based lottery contract created using
 1. Hardhat
 2. Chainlink VRF V2
