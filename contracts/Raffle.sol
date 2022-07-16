@@ -11,6 +11,7 @@ pragma solidity ^0.8.8;
 import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "@chainlink/contracts/src/v0.8/interfaces/KeeperCompatibleInterface.sol";
+import "hardhat/console.sol";
 
 error Raffle__NotEnoughETHEntered();
 error Raffle__TransferFailed();
@@ -92,6 +93,10 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         bool timePassed = ((block.timestamp - s_lastTimeStamp) > i_interval);
         bool hasPlayers = s_players.length > 0;
         bool hasBalance = address(this).balance > 0;
+        console.log('##isOpen', isOpen);
+        console.log('##timePassed', timePassed);
+        console.log('##hasPlayers', hasPlayers);
+        console.log('##hasBalance', hasBalance);
         upKeepNeeded = (isOpen && timePassed && hasPlayers && hasBalance);
     }
 

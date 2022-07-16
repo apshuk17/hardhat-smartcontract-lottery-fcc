@@ -85,7 +85,7 @@ const main = () => {
                       assert(!upKeepNeeded)
                   })
 
-                  it("returns false if enough time hasn't passed", async () => {
+                  it.only("returns false if enough time hasn't passed", async () => {
                       await raffle.enterRaffle({ value: raffleEntranceFee })
                       await network.provider.send("evm_increaseTime", [parseFloat(interval) - 1])
                       await network.provider.send("evm_mine", [])
